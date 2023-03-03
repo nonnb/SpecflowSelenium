@@ -1,0 +1,43 @@
+﻿@model BankingWebApp.Models.Transfer
+
+@{
+    ViewData["Title"] = "Transfer";
+}
+
+<h1>Edit</h1>
+
+<h4>Transfer funds</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Transfer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FromBankAccountId" class="control-label"></label>
+                <input asp-for="FromBankAccountId" class="form-control" />
+                <span asp-validation-for="FromBankAccountId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToBankAccountId" class="control-label"></label>
+                <input asp-for="ToBankAccountId" class="form-control"></input>
+                <span asp-validation-for="ToBankAccountId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control"></input>
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="Transfer" type="submit" value="Transfer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

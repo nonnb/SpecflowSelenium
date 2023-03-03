@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BankingWebApp.Models.BankAccount>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Accounts</h1>
+
+<p>
+    <a asp-action="Create">Create</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BankAccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountHolder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BankAccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountHolder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentBalance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType.AccountTypeId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BankAccountNumber">Edit</a> |
+                    <a asp-action="Transfer" asp-route-id="@item.BankAccountNumber">Transfer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
